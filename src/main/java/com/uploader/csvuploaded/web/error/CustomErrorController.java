@@ -2,7 +2,6 @@ package com.uploader.csvuploaded.web.error;
 
 
 import com.uploader.csvuploaded.exception.BusinessException;
-import com.uploader.csvuploaded.exception.SomethingNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,6 +11,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * handle all exception and respond http error
+ */
 @ControllerAdvice
 class CustomErrorController {
     private static final Logger log = LoggerFactory.getLogger(CustomErrorController.class);
@@ -27,12 +29,7 @@ class CustomErrorController {
             log.warn("Problem processing request: " + request.getRequestURI());
             log.warn("Problem description: " + ex.getMessage());
 
-            // 4xx
-            if (ex instanceof SomethingNotFoundException) {
-                httpStatus = HttpStatus.NOT_FOUND; // 404
-            } else {
-                httpStatus = HttpStatus.BAD_REQUEST; // 400
-            }
+            httpStatus = HttpStatus.BAD_REQUEST; // 400
             ErrorJson error = new ErrorJson(((BusinessException) ex).getErrorCode(), ex.getMessage(), request.getRequestURI());
             return new ResponseEntity<>(error, httpStatus);
 

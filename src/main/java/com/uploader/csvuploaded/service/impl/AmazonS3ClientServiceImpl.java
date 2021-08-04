@@ -44,7 +44,6 @@ public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
     /**
      * Upload file to s3 bucket
      */
-    @Async
     public void uploadFileToS3Bucket(MultipartFile multipartFile, boolean enablePublicReadAccess) {
         String fileName = multipartFile.getOriginalFilename();
 

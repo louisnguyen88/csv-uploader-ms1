@@ -1,5 +1,8 @@
 package com.uploader.csvuploaded.exception;
 
+/**
+ * Business Exception, this exception will be throw when we got any exception related to business
+ */
 public class BusinessException extends RuntimeException {
 
     private String errorCode = "";

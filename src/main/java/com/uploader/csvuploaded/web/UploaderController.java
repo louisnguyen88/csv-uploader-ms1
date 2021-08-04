@@ -22,6 +22,11 @@ public class UploaderController {
     @Autowired
     private AmazonS3ClientService amazonS3ClientService;
 
+    /**
+     * Upload file API to receive file from client and process it
+     * @param file
+     * @return
+     */
     @PostMapping
     public Map<String, String> uploadFile(@RequestPart(value = "file") MultipartFile file) {
         if (file == null || !file.getOriginalFilename().toLowerCase().endsWith(".csv")) {

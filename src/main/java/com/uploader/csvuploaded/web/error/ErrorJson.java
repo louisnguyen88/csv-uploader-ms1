@@ -1,5 +1,8 @@
 package com.uploader.csvuploaded.web.error;
 
+/**
+ * Error json class will be respond error code and message
+ */
 class ErrorJson {
 
     String uri;
