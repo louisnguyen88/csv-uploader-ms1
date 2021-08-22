@@ -20,7 +20,7 @@ group = 'com.uploader'
 version = '1.0'
 sourceCompatibility = '1.8'
 
-def appName = "SpringBootTemplate Sample Web Service"
+def appName = "ms1-uploader"
 def appVendor = "Sample RCT, INC."
 def builtBy = "louisnguyen"
 def now = new Date().format("dd/MM/yyyy HH:mm:ss")
@@ -56,19 +56,9 @@ sourceSets {
     main {
         resources.excludes = ["*.jar"]
     }
-    integrationTest {
-        java.srcDir file("src/integrationTest/java")
-        resources.srcDir file("src/integrationTest/resources")
-    }
+
 }
 
-task integrationTest(type: Test) {
-    testClassesDirs = sourceSets.integrationTest.output.classesDirs
-    classpath = sourceSets.integrationTest.runtimeClasspath
-}
-
-// This is required for Jenkins to run the unit tests
-test.dependsOn integrationTest
 
 jib {
     from {
