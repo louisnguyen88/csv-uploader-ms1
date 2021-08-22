@@ -21,7 +21,6 @@ jobs:
         distribution: 'adopt'
 // Config AWS
     - name: Configure AWS credentials
-      need: build
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{secrets.AWS_ID}}
@@ -29,7 +28,6 @@ jobs:
         aws-region: ${{secrets.AWS_GEGION}}
   // Login ECR
     - name: Login to Amazon ECR
-      need: awsonfig
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
     - name: Grant execute permission for gradlew
