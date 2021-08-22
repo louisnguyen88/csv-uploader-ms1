@@ -10,19 +10,22 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
+
 plugins {
     id 'com.google.cloud.tools.jib' version '3.1.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'org.springframework.boot' version '2.5.0'
     id 'java'
 }
+// Label variables
 group = 'com.gradteam'
 version = '1.0'
 sourceCompatibility = '1.8'
 
+//Environment variables
 def appName = "ms1-uploader"
 def appVendor = "Seisma Grad Team"
-def builtBy = "louisnguyen"
+def builtBy = "gradTeam"
 def now = new Date().format("dd/MM/yyyy HH:mm:ss")
 def commitHashFull = UUID.randomUUID().toString()
 
@@ -63,7 +66,6 @@ sourceSets {
 jib {
     from {
         image = "adoptopenjdk/openjdk8"
-
     }
     to {
         image = "289193905928.dkr.ecr.ap-southeast-2.amazonaws.com/upload-csv:$commitHashFull"
@@ -82,7 +84,7 @@ jib {
         ]
         environment = [
                 appName: appName,
-                appVendor: appVendor,
+                appVendor: builtBy,
                 builtBy: builtBy,
                 buildDate: "${now.toString()}" as String,
                 implementationDate: "${now.toString()}" as String,
