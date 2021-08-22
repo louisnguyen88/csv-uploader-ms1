@@ -19,14 +19,14 @@ jobs:
       with:
         java-version: '8'
         distribution: 'adopt'
-// Config AWS
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{secrets.AWS_ID}}
         aws-secret-access-key: ${{secrets.AWS_KEY}}
         aws-region: ${{secrets.AWS_GEGION}}
-  // Login ECR
+
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
