@@ -11,9 +11,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 8
@@ -21,14 +19,19 @@ jobs:
       with:
         java-version: '8'
         distribution: 'adopt'
+
+  awsonfig:
     - name: Configure AWS credentials
+      need: build
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{secrets.AWS_ID}}
         aws-secret-access-key: ${{secrets.AWS_KEY}}
         aws-region: ${{secrets.AWS_GEGION}}
 
+   deploy:
     - name: Login to Amazon ECR
+      need: awsonfig
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
     - name: Grant execute permission for gradlew
