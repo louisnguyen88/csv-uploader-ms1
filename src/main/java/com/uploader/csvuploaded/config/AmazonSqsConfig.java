@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 /**
- * Configuration Amazon SQS
+ * Configuration Amazon SQL
  */
 @Configuration
 public class AmazonSqsConfig {

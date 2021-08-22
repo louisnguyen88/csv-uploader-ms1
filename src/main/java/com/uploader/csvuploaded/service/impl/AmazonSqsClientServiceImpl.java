@@ -22,7 +22,6 @@ public class AmazonSqsClientServiceImpl implements AmazonSqsClientService {
 
     private final QueueMessagingTemplate queueMessagingTemplate;
 
-    //QueueMessagingTemplate initializes the messaging template by configuring the destination resolver as well as the message converter.
     @Autowired
     public AmazonSqsClientServiceImpl(QueueMessagingTemplate queueMessagingTemplate) {
         this.queueMessagingTemplate = queueMessagingTemplate;

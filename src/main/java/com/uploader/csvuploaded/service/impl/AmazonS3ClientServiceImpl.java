@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -43,14 +42,16 @@ public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
 
     /**
      * Upload file to s3 bucket
-     * MultipartFile has a getBytes() method that returns a byte array of the file's contents to write the bytes to a file.
-     * PutObjectRequest class using to optionally uploads object metadata and applies a canned access control policy to the new object.
      */
     public void uploadFileToS3Bucket(MultipartFile multipartFile, boolean enablePublicReadAccess) {
         String fileName = multipartFile.getOriginalFilename();
 
         try {
             //creating the file in the server (temporarily)
+            File root = new File("temp");
+            if(!root.exists()){
+                root.mkdirs();
+            }
             File file = new File("temp/" + fileName);
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(multipartFile.getBytes());
