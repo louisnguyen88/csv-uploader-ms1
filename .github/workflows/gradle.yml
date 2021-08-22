@@ -20,7 +20,6 @@ jobs:
         java-version: '8'
         distribution: 'adopt'
 
-  awsonfig:
     - name: Configure AWS credentials
       need: build
       uses: aws-actions/configure-aws-credentials@v1
@@ -28,7 +27,7 @@ jobs:
         aws-access-key-id: ${{secrets.AWS_ID}}
         aws-secret-access-key: ${{secrets.AWS_KEY}}
         aws-region: ${{secrets.AWS_GEGION}}
-        
+
     - name: Login to Amazon ECR
       need: awsonfig
       id: login-ecr
