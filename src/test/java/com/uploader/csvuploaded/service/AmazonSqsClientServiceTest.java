@@ -23,6 +23,6 @@ public class AmazonSqsClientServiceTest {
     public void shouldCallQueueMessagingTemplateToSendToUploadQueueWhenSendMessageToSqs() {
         amazonSqsClientService.sendMessageToSqs("bucket-name", "message");
         String queue = "ms-uploader";
-        verify(queueMessagingTemplate, times(2)).convertAndSend(eq(queue), any(S3StorageMessage.class));
+        verify(queueMessagingTemplate, times(1)).convertAndSend(eq(queue), any(S3StorageMessage.class));
     }
 }
