@@ -68,7 +68,6 @@ jib {
     }
     to {
         image = "289193905928.dkr.ecr.ap-southeast-2.amazonaws.com/upload-csv:$commitHashFull"
-
         tags = ['latest']
     }
     container {
