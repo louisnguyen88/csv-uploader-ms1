@@ -39,6 +39,6 @@ jobs:
        uses: aws-actions/amazon-ecr-login@v1
      - name: Push To ECR
        run: ./gradlew jib
-       aws ecr update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
-       echo "Launching new update task" in service
+            aws ecr update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
+            echo "Launching new update task" in service
 
