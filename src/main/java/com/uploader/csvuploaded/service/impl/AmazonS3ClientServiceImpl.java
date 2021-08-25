@@ -21,7 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * service layer to make s3 and sqs calls, validation.
+ * service layer to make s3 and sqs calls, validation
  *
  */
 @Component
